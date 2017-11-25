@@ -5,7 +5,7 @@ public class Ticket{
     int price = 0;
     Date expirationDate = null;
     boolean ticketValid = false;
-    
+
     public Ticket(Date date){
         System.out.println("New ticket created");
         expirationDate = date;
@@ -14,6 +14,7 @@ public class Ticket{
 
     void checkTicketDate(){
         Date currentDate = new Date();
+        System.out.println(currentDate.getTime());
         System.out.println(currentDate);
     }
 }

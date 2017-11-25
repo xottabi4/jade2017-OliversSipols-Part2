@@ -11,9 +11,9 @@ public class Shops{
     }
 
     public Ticket sellTicket(){
-        System.out.println("Ticket SOLD");
         Ticket newTicket = new Ticket(new Date());
         soldTickets.add(newTicket);
+        System.out.println("Ticket SOLD");
         return newTicket;
     } 
 }
