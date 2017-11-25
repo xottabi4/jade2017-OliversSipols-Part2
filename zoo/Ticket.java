@@ -2,7 +2,7 @@ package zoo;
 
 import java.util.Date;
 public class Ticket{
-    int price = 0;
+    double price = 0;
     Date expirationDate = null;
     boolean ticketValid = false;
 
