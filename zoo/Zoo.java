@@ -2,29 +2,32 @@ package zoo;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import zoo.Shops;
 import zoo.Ticket;
 import zoo.Visitor;
 
 public class Zoo{
     ArrayList<Visitor> visitors = new ArrayList<Visitor>();
-    Shops shops = null;
-    int money = 0;
-    int amountOfVisitors = 0;
+    Shops shops = new Shops();
     
-    public Zoo(int amountOfVisitors, int amountOfVouchers){
-        this.amountOfVisitors = amountOfVisitors;
-        shops = new Shops(amountOfVouchers);
+    public Zoo(){
     }
 
-    public void run(){
-        for(int i = 0; i < amountOfVisitors; i++){
-            visitors.add(new Visitor());
-            visitors.get(i).showID();            
-            if (i % 2 == 0){
-                visitors.get(i).receiveVoucher(shops.giveVoucher());
-            }
-            visitors.get(i).showID();
+    public Shops getShops(){
+        return shops;
+    }
+
+    public Visitor visitorNew(String name){
+        visitors.add(new Visitor(name));
+        return visitors.get(visitors.size()-1);
+    }
+
+    public void sellTickets(){
+        for(int i = 0; i<visitors.size(); i++){
+            System.out.println("Visitor " + visitors.get(i).getName() + " is buying a ticket");
             visitors.get(i).buyTicket(shops.sellTicket(visitors.get(i).useVoucher()));
+            System.out.println("-----------------------------------------");                    
         }
     }
 }

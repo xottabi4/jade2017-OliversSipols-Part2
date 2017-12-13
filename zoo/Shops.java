@@ -8,39 +8,40 @@ import zoo.Voucher;
 public class Shops{
     ArrayList<Ticket> soldTickets = new ArrayList<Ticket>();
     ArrayList<Voucher> vouchers = new ArrayList<Voucher>();
-    public Shops(int ammountOfVouchers){
-        System.out.println("SHOPS OPEN");
-        System.out.println("Creating " + ammountOfVouchers + " vouchers");
-        createVouchers(ammountOfVouchers);
+    double money = 0;
+    public Shops(){
+        System.out.println("SHOPS OPENED");
+    }
+
+    double getMoney(){
+        return money;
     }
 
     public Ticket sellTicket(Voucher voucher){
-        if (voucher != null && voucher.valid){
-            
+        Ticket newTicket = new Ticket();
+        if (voucher != null && voucher.isValid()){
+            System.out.println(
+                "Visitor has a voucher with ID: " +voucher.getID() +
+                " and discount:" + voucher.getDiscount()*100 + "%");
+                newTicket.updatePrice(voucher);
+                voucher.used();
+        }else{
+            System.out.println("Visitor doesn't have valid voucher");
         }
-        Ticket newTicket = new Ticket(new Date());
         soldTickets.add(newTicket);
-        System.out.println("Ticket SOLD");
+        System.out.println("Ticket SOLD for " + newTicket.getPrice());
+        money += newTicket.getPrice();
         return newTicket;
     } 
 
-    public void createVouchers(int ammountOfVouchers){
-        System.out.println(ammountOfVouchers);
-        for(int i = 0; i < ammountOfVouchers; i++){
-            switch(i % 3){
-                case 0 : vouchers.add(new Voucher(0.1));
-                break;                
-                case 1 : vouchers.add(new Voucher(0.15));
-                break;
-                case 2 : vouchers.add(new Voucher(0.2));
-                break;               
-            }
-        }
+    public Voucher createVoucher(double percentage){
+        vouchers.add(new Voucher(percentage));
+        return vouchers.get(vouchers.size()-1);   
     }
 
     public Voucher giveVoucher(){
         for (int i =0; i < vouchers.size(); i++){
-            if (!vouchers.get(i).given){
+            if (!vouchers.get(i).isGiven()){
                 return vouchers.get(i).give();
             }
         }

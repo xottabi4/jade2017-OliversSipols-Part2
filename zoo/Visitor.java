@@ -10,15 +10,21 @@ public class Visitor{
     ArrayList<Ticket> tickets = new ArrayList<Ticket>();
     ArrayList<Voucher> vouchers = new ArrayList<Voucher>();
     int ID = 0;
+    String name = "";
 
-    public Visitor(){
+    public Visitor(String name){
+        this.name = name;
         idCounter++;
         ID = idCounter;
-        System.out.println("NEW Visitor");
-        tickets = new ArrayList<Ticket>();
+        System.out.println("NEW Visitor: " + name);
+    }
+
+    public String getName(){
+        return name;
     }
 
     public void buyTicket(Ticket ticket){
+        System.out.println("Visitor " + name + " bought a ticket");
         tickets.add(ticket);
     }
 
@@ -29,13 +35,14 @@ public class Visitor{
     public void receiveVoucher(Voucher voucher){
         if (voucher != null){
             vouchers.add(voucher);
-            System.out.println("Visitor with ID: " + ID + " received voucher with ID: " +voucher.getID());
+            System.out.println("Visitor " + name + " with ID: " + ID 
+            + " received voucher with ID: " + voucher.getID());
         }
     }
 
     public Voucher useVoucher(){
         for(int i = 0; i < vouchers.size(); i++){
-            if (vouchers.get(i).valid()){
+            if (vouchers.get(i).isValid()){
                 System.out.println(
                     "Using Voucher with ID: " +
                     vouchers.get(i).getID() +

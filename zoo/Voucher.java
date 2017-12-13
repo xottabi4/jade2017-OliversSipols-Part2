@@ -1,17 +1,21 @@
 package zoo;
 
 public class Voucher{
-    static int idCounter = 100000;
+    private static int idCounter = 100000;
     private int ID = 0;
-    boolean valid = true;
-    boolean given = false;
-    double discount = 0.0;
+    private boolean valid = true;
+    private boolean given = false;
+    private double discount = 0.0;
 
     public Voucher(double discount){  
         idCounter++;
         ID = idCounter;
         this.discount = discount;
         System.out.println("Voucher with ID: " + ID + " and discount: " + discount*100 + "% created");
+    }
+
+    public void used(){
+        valid = false;
     }
 
     public int getID(){
@@ -22,7 +26,7 @@ public class Voucher{
         return discount;
     }
 
-    public boolean valid(){
+    public boolean isValid(){
         return valid;
     }
 
@@ -31,7 +35,7 @@ public class Voucher{
         return this;
     }
 
-    public boolean given(){
+    public boolean isGiven(){
         return given;
     }
 }
