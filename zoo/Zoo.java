@@ -24,7 +24,7 @@ public class Zoo{
 
     public Visitor visitorNew(String name){
         visitors.add(new Visitor(name));
-        return visitors.get(visitors.size()-1);
+        return visitors.get(visitors.size() - 1);
     }
 
     public void sellTicket(Visitor visitor){
@@ -33,7 +33,7 @@ public class Zoo{
     }
 
     public void sellTickets(){
-        for(int i = 0; i<visitors.size(); i++){
+        for(int i = 0; i < visitors.size(); i++){
             sellTicket(visitors.get(i));
             System.out.println("-----------------------------------------");                    
         }

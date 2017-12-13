@@ -41,8 +41,8 @@ public class Visitor{
     public void receiveVoucher(Voucher voucher){
         if (voucher != null){
             vouchers.add(voucher);
-            System.out.println("Visitor " + name + " with ID: " + ID 
-            + " received voucher with ID: " + voucher.getID());
+            System.out.println("Visitor " + name + " with ID: " + ID + 
+            " received voucher with ID: " + voucher.getID());
         }
     }
 
@@ -50,11 +50,8 @@ public class Visitor{
         for(int i = 0; i < vouchers.size(); i++){
             if (vouchers.get(i).isValid()){
                 System.out.println(
-                    "Using Voucher with ID: " +
-                    vouchers.get(i).getID() +
-                    " and discount: " +
-                    vouchers.get(i).getDiscount() * 100 +
-                    "%"
+                    "Using Voucher with ID: " + vouchers.get(i).getID() +
+                    " and discount: " +  vouchers.get(i).getDiscount() * 100 + "%"
                     );
                 return vouchers.get(i);
             }

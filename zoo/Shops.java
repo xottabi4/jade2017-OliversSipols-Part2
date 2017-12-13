@@ -22,7 +22,7 @@ public class Shops{
         if (voucher != null && voucher.isValid()){
             System.out.println(
                 "Visitor has a voucher with ID: " +voucher.getID() +
-                " and discount:" + voucher.getDiscount()*100 + "%");
+                " and discount:" + voucher.getDiscount() * 100 + "%");
                 newTicket.updatePrice(voucher);
                 voucher.used();
         }else{
@@ -36,11 +36,11 @@ public class Shops{
 
     public Voucher createVoucher(double percentage){
         vouchers.add(new Voucher(percentage));
-        return vouchers.get(vouchers.size()-1);   
+        return vouchers.get(vouchers.size() - 1);   
     }
 
     public Voucher giveVoucher(){
-        for (int i =0; i < vouchers.size(); i++){
+        for (int i = 0; i < vouchers.size(); i++){
             if (!vouchers.get(i).isGiven()){
                 return vouchers.get(i).give();
             }

@@ -16,6 +16,6 @@ public class Main {
         // Checking for multiple tickets
         zoo.getVisitors().get(1).showTickets();
         // Shop bilance
-        System.out.println("Shop bilance: " +zoo.getShops().getMoney());
+        System.out.println("Shop balance: " + zoo.getShops().getMoney());
     }
 }

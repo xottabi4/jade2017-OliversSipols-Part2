@@ -11,7 +11,7 @@ public class Voucher{
         idCounter++;
         ID = idCounter;
         this.discount = discount;
-        System.out.println("Voucher with ID: " + ID + " and discount: " + discount*100 + "% created");
+        System.out.println("Voucher with ID: " + ID + " and discount: " + discount * 100 + "% created");
     }
 
     public void used(){
