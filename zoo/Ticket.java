@@ -23,6 +23,10 @@ public class Ticket{
         checkTicketDate();
     }
 
+    public int getID(){
+        return ID;
+    }
+
     public double getPrice(){
         return price;
     }

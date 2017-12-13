@@ -19,6 +19,12 @@ public class Visitor{
         System.out.println("NEW Visitor: " + name);
     }
 
+    public void showTickets(){
+        for(int i = 0; i<tickets.size(); i++){
+            System.out.println("Visitor " + name + " has a ticket with ID:" + tickets.get(i).getID());
+        }
+    }
+
     public String getName(){
         return name;
     }

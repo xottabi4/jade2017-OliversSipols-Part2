@@ -14,6 +14,10 @@ public class Zoo{
     public Zoo(){
     }
 
+    public ArrayList<Visitor> getVisitors(){
+        return visitors;
+    }
+
     public Shops getShops(){
         return shops;
     }
@@ -23,10 +27,14 @@ public class Zoo{
         return visitors.get(visitors.size()-1);
     }
 
+    public void sellTicket(Visitor visitor){
+        System.out.println("Visitor " + visitor.getName() + " is buying a ticket");
+        visitor.buyTicket(shops.sellTicket(visitor.useVoucher()));        
+    }
+
     public void sellTickets(){
         for(int i = 0; i<visitors.size(); i++){
-            System.out.println("Visitor " + visitors.get(i).getName() + " is buying a ticket");
-            visitors.get(i).buyTicket(shops.sellTicket(visitors.get(i).useVoucher()));
+            sellTicket(visitors.get(i));
             System.out.println("-----------------------------------------");                    
         }
     }
