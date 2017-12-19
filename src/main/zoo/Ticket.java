@@ -3,15 +3,16 @@ package zoo;
 import java.util.Calendar;
 import java.util.Date;
 
-import zoo.Voucher;
-public class Ticket{
+public class Ticket {
+
     private static int idCounter = 10;
     private int ID = 0;
-    private double price = 10.00d;
-    Date expirationDate = null;
-    boolean ticketValid = false;
+    private double price;
+    private String zone;
+    private Date expirationDate = null;
+    private boolean ticketValid = false;
 
-    public Ticket(){
+    private Ticket() {
         idCounter++;
         ID = idCounter;
         Date currentDate = new Date();
@@ -21,6 +22,12 @@ public class Ticket{
         expirationDate = c.getTime();
         System.out.println("New ticket with expiration date " + expirationDate + " created");
         checkTicketDate();
+    }
+
+    public Ticket(final double price, final String zone) {
+        this();
+        this.price = price;
+        this.zone = zone;
     }
 
     public int getID(){
@@ -47,5 +54,9 @@ public class Ticket{
         }else{
             ticketValid = true;
         }
+    }
+
+    public String getZone() {
+        return zone;
     }
 }
